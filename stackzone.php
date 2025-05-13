@@ -129,7 +129,7 @@ class Stackzone
       } else {
         $i = 1;
         foreach ($data['items'] as $item) {
-          echo "<a class='item' href='./stackObj/" . $item->Getobj_id() . "'>{$i} - {$item->GetInfo()}</a>";
+          echo "<span class='item'>{$i} - {$item->GetInfo()}</span>";
           $i++;
         }
       }
