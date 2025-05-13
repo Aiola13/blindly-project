@@ -1,14 +1,36 @@
 <?php
-
 class StackObj
 {
-  public string $id;
-  public string $name;
+  protected int $_id;
+  protected string $_name;
+  protected string $_type;
+  protected string $_desc;
+  protected string $_effect;
+  protected string $_sprites;
+  protected bool $_stackable;
+  protected bool $_consumable;
+  protected bool $_usable;
+  protected bool $_heldable;
+  protected bool $_held_usable;
 
-  public function __construct(string $id, string $name)
+  public function __construct(int $arg1, string $arg2, string $arg3, string $arg4, string $arg5, string $arg6, bool $arg7, bool $arg8, bool $arg9, bool $arg10, bool $arg11)
   {
-    $this->id = $id;
-    $this->name = $name;
+    $this->_id = $arg1;
+    $this->_name = $arg2;
+    $this->_type = $arg3;
+    $this->_desc = $arg4;
+    $this->_effect = $arg5;
+    $this->_sprites = $arg6;
+    $this->_stackable = $arg7;
+    $this->_consumable = $arg8;
+    $this->_usable = $arg9;
+    $this->_heldable = $arg10;
+    $this->_held_usable = $arg11;
+  }
+
+  public function getName(): string
+  {
+    return $this->_name;
   }
 }
 
@@ -68,20 +90,22 @@ class Stackzone
       $iconClass = $this->icons[$key] ?? 'fas fa-question-circle';
 
       echo "<div class='category'>";
-      echo "<div class='category-title'><i class='$iconClass'></i>{$data['name']}</div>";
+      echo "<div class='category-title'><i class='$iconClass'></i> {$data['name']}</div>";
 
       if (empty($data['items'])) {
         echo "<div class='item'>Aucun objet.</div>";
       } else {
         $i = 1;
         foreach ($data['items'] as $item) {
-          echo "<a class='item' href='stackzone?=$item->name'>$i - {$item->name}</a>";
+          echo "<div class='item'>{$i} - {$item->getName()}</div>";
           $i++;
         }
       }
 
       echo "</div>";
     }
+
+    echo "</div>";
   }
 }
 ?>
@@ -98,13 +122,16 @@ class Stackzone
   <main>
     <?php
     $stackzone1 = new Stackzone();
-    $stackzone1->addObj('pokeballs', new StackObj('poke01', 'Poké Ball'));
-    $stackzone1->addObj('pokeballs', new StackObj('poke02', 'Master Ball'));
-    $stackzone1->addObj('pokeballs', new StackObj('poke02', 'Super Ball'));
-    $stackzone1->addObj('pokeballs', new StackObj('poke02', 'Hyper Ball'));
-    $stackzone1->addObj('medicines', new StackObj('med01', 'Potion'));
+
+    $stackzone1->addObj('pokeballs', new StackObj(1, 'Poké Ball', 'pokeball', 'Une Poké Ball standard.', 'Attrape un Pokémon.', 'poke_ball.png', true, false, true, false, false));
+    $stackzone1->addObj('pokeballs', new StackObj(2, 'Master Ball', 'pokeball', 'Ne rate jamais sa cible.', 'Attrape automatiquement un Pokémon.', 'master_ball.png', true, false, true, false, false));
+    $stackzone1->addObj('pokeballs', new StackObj(3, 'Super Ball', 'pokeball', 'Meilleure qu\'une Poké Ball.', 'Taux de capture amélioré.', 'super_ball.png', true, false, true, false, false));
+    $stackzone1->addObj('pokeballs', new StackObj(4, 'Hyper Ball', 'pokeball', 'Encore meilleure.', 'Capture encore plus efficace.', 'ultra_ball.png', true, false, true, false, false));
+    $stackzone1->addObj('medicines', new StackObj(5, 'Potion', 'medicine', 'Restaure 20 PV.', 'Soigne légèrement un Pokémon.', 'potion.png', true, true, true, false, false));
 
     $stackzone1->getCategories();
     ?>
   </main>
 </body>
+
+</html>
