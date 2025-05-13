@@ -24,37 +24,53 @@ class stackzone
  */
 class StacjObj
 {
-	protected string $_id;
+	protected int $_id;
 	protected string $_name;
+	protected string $_type;
 	protected string $_desc;
-	protected string $_;
-	protected string $_name;
-	protected string $_name;
-	protected string $_name;
-	protected string $_name;
-	function __construct($arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg11, $arg12, $arg13, $arg14, $arg15, $arg16, $arg17)
+	protected string $_effect;
+	protected string $_sprites;
+	protected bool $_stackable;
+	protected bool $_consumable;
+	protected bool $_usable;
+	protected bool $_heldable;
+	protected bool $_held_usable;
+
+
+	function __construct(int $arg1, string $arg2, string $arg3, string $arg4, string $arg5, string $arg6, bool $arg7, bool $arg8, bool $arg9, bool $arg10, bool $arg11)
 	{
-		// code...
-		parent::__construct($arg1, $arg2, $arg3, $arg4, $arg5, $arg6);
-		$this->chambre = $arg11;
-		$this->identifiant = $arg12;
-		$this->entree = $arg13;
-		$this->sortie = $arg14;
-		$this->raison = $arg15;
-		$this->prescription = $arg16;
-		$this->secteur = $arg17;
+		$this->_id = $arg1;
+		$this->_name = $arg2;
+		$this->_type = $arg3;
+		$this->_desc = $arg4;
+		$this->_effect = $arg5;
+		$this->_sprites = $arg6;
+		$this->_stackable = $arg7;
+		$this->_consumable = $arg8;
+		$this->_usable = $arg9;
+		$this->_heldable = $arg10;
+		$this->_held_usable = $arg11;
 	}
-	function showpatientinfo()
+
+	public function Getobj_name($id)
 	{
-		parent::checkpersonnalinfo();
-		echo $this->chambre;
-		echo $this->entree;
-		echo $this->sortie;
-		echo $this->raison;
-		echo $this->prescription;
+		return $this->_name;
 	}
-	function patienttechnicalinfo()
+	public function Getobj_type($id)
 	{
-		return;
+		return $this->_type;
 	}
+	public function Getobj_desc($id)
+	{
+		return $this->_desc;
+	}
+	public function Getobj_effect($id)
+	{
+		return $this->_effect;
+	}
+	public function Getobj_sprites($id)
+	{
+		return $this->_sprites;
+	}
+	public function Useobj($id) {}
 }
