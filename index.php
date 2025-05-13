@@ -40,10 +40,10 @@ Class Pokemon{
     }
     public function getHp(){
         if ($this->hp<0) {
-         echo "<br>".$this->hp=0;
+         echo "<br>le pokemon est mort".$this->hp;
         }
         else {
-           echo "<br>". $this->hp;
+           echo "<br>le pokemon a". $this->hp."hp";
         }
     }
 }
