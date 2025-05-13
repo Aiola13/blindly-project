@@ -75,7 +75,7 @@ class Stackzone
       } else {
         $i = 1;
         foreach ($data['items'] as $item) {
-          echo "<a class='item' href='stackzone?=$item->name'>$i - {$item->name}</a>";
+          echo "<a class='item' href=''>$i - {$item->name}</a>";
           $i++;
         }
       }
