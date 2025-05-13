@@ -1,19 +1,22 @@
 <?php
 
-class PokemonManager {
+class PokemonManager
+{
     private $p_cap1;
     private $p_cap2;
     private $v_pok1;
     private $v_pok2;
     private $first_to_att;
-    public function __construct($p_cap1, $p_cap2, $v_pok1, $v_pok2) {
+    public function __construct($p_cap1, $p_cap2, $v_pok1, $v_pok2)
+    {
         $this->p_cap1 = $p_cap1;
         $this->p_cap2 = $p_cap2;
         $this->v_pok1 = $v_pok1;
         $this->v_pok2 = $v_pok2;
     }
 
-    public function p_cap(){
+    public function p_cap()
+    {
         if ($this->p_cap1 > $this->p_cap2) {
             $this->first_to_att = "p1";
             return "Pokemon 1 attaque en premier (capacité)";
@@ -25,7 +28,8 @@ class PokemonManager {
         }
     }
 
-    public function v_pok() {
+    public function v_pok()
+    {
         if ($this->v_pok1 > $this->v_pok2) {
             $this->first_to_att = "p1";
             return "Pokemon 1 attaque en premier (vitesse)";
